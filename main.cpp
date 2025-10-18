@@ -12,8 +12,6 @@
 #include "metric_impl/metrics.hpp"
 #include "metric_accumulator_impl/accumulators.hpp"
 
-// -f comments_AST exceptions_AST if_AST loops_AST many_lines_AST many_parameters_AST match_case_AST nested_if_AST simple_AST math_utils_AST string_utils_AST
-
 int main(int argc, char* argv[]) {
     try {
         // 1. Парсинг входных параметров.
