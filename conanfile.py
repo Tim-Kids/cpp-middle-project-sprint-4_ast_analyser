@@ -1,11 +1,10 @@
 from conan import ConanFile
 from conan.tools.cmake import CMake, CMakeToolchain, CMakeDeps
 from conan.tools.files import copy, rmdir
-from conan.tools.layout import basic_layout
 import os
 
-class analyzerConan(ConanFile):
-    name = "analyzer"
+class AnalyserConan(ConanFile):
+    name = "analyser"
     version = "1.0.0"
     settings = "os", "compiler", "build_type", "arch"
     
@@ -56,7 +55,9 @@ class analyzerConan(ConanFile):
         self.tool_requires("cmake/3.30.0")
     
     def layout(self):
-        basic_layout(self, src_folder=".", build_folder="build")
+        self.folders.source = "."
+        self.folders.build = "build"
+        self.folders.generators = "build/generators"
     
     def generate(self):
         deps = CMakeDeps(self)

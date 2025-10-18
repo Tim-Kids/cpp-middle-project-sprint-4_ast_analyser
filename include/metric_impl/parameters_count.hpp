@@ -1,23 +1,14 @@
-#include <array>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <filesystem>
-#include <fstream>
-#include <functional>
-#include <iostream>
-#include <ranges>
-#include <sstream>
-#include <string>
-#include <variant>
-#include <vector>
-
 #include "metric.hpp"
 
-namespace analyzer::metric::metric_impl {
+#include <string>
 
-struct CountParametersMetric final : public IMetric {
-    // здесь ваш код
+namespace analyser::metric::metric_impl {
+
+struct CountParametersMetric final: IMetric {
+    protected:
+    [[nodiscard]] MetricResult::ValueType CalculateImpl(const function::Function& f) const override;
+
+    [[nodiscard]] std::string Name() const noexcept override;
 };
 
-}  // namespace analyzer::metric::metric_impl
+}  // namespace analyser::metric::metric_impl

@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <string>
 #include <string_view>
+#include <print>
 
 inline int ToInt(std::string_view value) {
     int result{};

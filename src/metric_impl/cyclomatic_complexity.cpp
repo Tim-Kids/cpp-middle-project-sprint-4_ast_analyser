@@ -1,23 +1,33 @@
+#include <algorithm>
+
 #include "metric_impl/cyclomatic_complexity.hpp"
 
-#include <unistd.h>
+namespace analyser::metric::metric_impl {
 
-#include <algorithm>
-#include <array>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <fstream>
-#include <functional>
-#include <iostream>
-#include <ranges>
-#include <sstream>
-#include <string>
-#include <variant>
-#include <vector>
+std::string CyclomaticComplexityMetric::Name() const noexcept {
+    return "CyclomaticComplexity";
+}
 
-namespace analyzer::metric::metric_impl {
+static bool IsCyclomaticValue(std::string_view s) {
+        return
+        (s.starts_with("(try_statement")
+        || s.starts_with("(except_clause")
+        || s.starts_with("(finally_clause")
+        || s.starts_with("(if_statement")
+        || s.starts_with("(elif_clause")
+        || s.starts_with("alternative: (elif_clause")
+        || s.starts_with("(for_statement")
+        || s.starts_with("(while_statement")
+        || s.starts_with("(match_statement")
+        || s.starts_with("(case_clause")
+        || s.starts_with("alternative: (case_clause")
+        || s.starts_with("(conditional_expression")
+        || s.starts_with("(lambda"));
+}
 
-// здесь ваш код
-
-}  // namespace analyzer::metric::metric_impl
+MetricResult::ValueType CyclomaticComplexityMetric::CalculateImpl(const function::Function& f) const {
+    auto filtered = Filter(f);
+    auto c = std::ranges::count_if(filtered, IsCyclomaticValue);
+    return static_cast<int>(basic_complexity + c);
+}
+}  // namespace analyser::metric::metric_impl

@@ -1,28 +1,15 @@
 #pragma once
-#include <unistd.h>
 
-#include <algorithm>
-#include <array>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <filesystem>
-#include <fstream>
-#include <functional>
-#include <iostream>
-#include <ranges>
-#include <sstream>
 #include <string>
-#include <variant>
 #include <vector>
+#include <optional>
 
 #include "file.hpp"
 
-namespace fs = std::filesystem;
 namespace rv = std::ranges::views;
 namespace rs = std::ranges;
 
-namespace analyzer::function {
+namespace analyser::function {
 
 struct Function {
     std::string filename;
@@ -32,9 +19,9 @@ struct Function {
 };
 
 struct FunctionExtractor {
-    std::vector<Function> Get(const analyzer::file::File &file);
+    static std::vector<Function> Get(const analyser::file::File& file);
 
-private:
+    private:
     struct Position {
         size_t line;
         size_t col;
@@ -52,10 +39,10 @@ private:
         Position end;
     };
 
-    FunctionNameLocation GetNameLocation(const std::string &function_ast);
-    std::string GetNameFromSource(const std::string &function_ast, const std::vector<std::string> &lines);
-    std::optional<ClassInfo> FindEnclosingClass(const std::string &ast, const FunctionNameLocation &func_loc);
-    std::string GetClassNameFromSource(const ClassInfo &class_info, const std::vector<std::string> &lines);
+    static FunctionNameLocation GetNameLocation(const std::string& function_ast);
+    static std::string GetNameFromSource(const std::string& function_ast, const std::vector<std::string>& lines);
+    static std::optional<ClassInfo> FindEnclosingClass(const std::string& ast, const FunctionNameLocation& func_loc);
+    static std::string GetClassNameFromSource(const ClassInfo& class_info, const std::vector<std::string>& lines);
 };
 
-}  // namespace analyzer::function
+}  // namespace analyser::function

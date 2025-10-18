@@ -1,0 +1,35 @@
+(module [0, 0] - [7, 25]
+  (function_definition [0, 0] - [7, 25]
+    name: (identifier [0, 4] - [0, 19])
+    parameters: (parameters [0, 19] - [0, 22]
+      (identifier [0, 20] - [0, 21]))
+    body: (block [1, 4] - [7, 25]
+      (match_statement [1, 4] - [7, 25]
+        subject: (identifier [1, 10] - [1, 11])
+        body: (block [1, 12] - [7, 25]
+          alternative: (case_clause [2, 8] - [3, 24]
+            (case_pattern [2, 13] - [2, 14]
+              (integer [2, 13] - [2, 14]))
+            consequence: (block [3, 12] - [3, 24]
+              (return_statement [3, 12] - [3, 24]
+                (string [3, 19] - [3, 24]
+                  (string_start [3, 19] - [3, 20])
+                  (string_content [3, 20] - [3, 23])
+                  (string_end [3, 23] - [3, 24])))))
+          alternative: (case_clause [4, 8] - [5, 24]
+            (case_pattern [4, 13] - [4, 14]
+              (integer [4, 13] - [4, 14]))
+            consequence: (block [5, 12] - [5, 24]
+              (return_statement [5, 12] - [5, 24]
+                (string [5, 19] - [5, 24]
+                  (string_start [5, 19] - [5, 20])
+                  (string_content [5, 20] - [5, 23])
+                  (string_end [5, 23] - [5, 24])))))
+          alternative: (case_clause [6, 8] - [7, 25]
+            (case_pattern [6, 13] - [6, 14])
+            consequence: (block [7, 12] - [7, 25]
+              (return_statement [7, 12] - [7, 25]
+                (string [7, 19] - [7, 25]
+                  (string_start [7, 19] - [7, 20])
+                  (string_content [7, 20] - [7, 24])
+                  (string_end [7, 24] - [7, 25]))))))))))

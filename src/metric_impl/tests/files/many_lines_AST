@@ -1,0 +1,50 @@
+(module [0, 0] - [14, 21]
+  (function_definition [0, 0] - [14, 21]
+    name: (identifier [0, 4] - [0, 17])
+    parameters: (parameters [0, 17] - [0, 19])
+    body: (block [1, 4] - [14, 21]
+      (assignment [1, 4] - [4, 5]
+        left: (identifier [1, 4] - [1, 8])
+        right: (list [1, 11] - [4, 5]
+          (integer [2, 8] - [2, 9])
+          (integer [2, 11] - [2, 12])
+          (integer [2, 14] - [2, 15])
+          (integer [3, 8] - [3, 9])
+          (integer [3, 11] - [3, 12])
+          (integer [3, 14] - [3, 15])))
+      (assignment [5, 4] - [5, 21]
+        left: (identifier [5, 4] - [5, 9])
+        right: (call [5, 12] - [5, 21]
+          function: (identifier [5, 12] - [5, 15])
+          arguments: (argument_list [5, 15] - [5, 21]
+            (identifier [5, 16] - [5, 20]))))
+      (call [7, 4] - [7, 28]
+        function: (identifier [7, 4] - [7, 9])
+        arguments: (argument_list [7, 9] - [7, 28]
+          (string [7, 10] - [7, 27]
+            (string_start [7, 10] - [7, 11])
+            (string_content [7, 11] - [7, 26])
+            (string_end [7, 26] - [7, 27]))))
+      (call [8, 4] - [8, 46]
+        function: (identifier [8, 4] - [8, 9])
+        arguments: (argument_list [8, 9] - [8, 46]
+          (string [8, 10] - [8, 45]
+            (string_start [8, 10] - [8, 11])
+            (string_content [8, 11] - [8, 44])
+            (string_end [8, 44] - [8, 45]))))
+      (call [10, 4] - [10, 36]
+        function: (identifier [10, 4] - [10, 29])
+        arguments: (argument_list [10, 29] - [10, 36]
+          (identifier [10, 30] - [10, 35])))
+      (call [11, 4] - [11, 36]
+        function: (identifier [11, 4] - [11, 29])
+        arguments: (argument_list [11, 29] - [11, 36]
+          (identifier [11, 30] - [11, 35])))
+      (call [12, 4] - [12, 36]
+        function: (identifier [12, 4] - [12, 29])
+        arguments: (argument_list [12, 29] - [12, 36]
+          (identifier [12, 30] - [12, 35])))
+      (assert_statement [14, 4] - [14, 21]
+        (comparison_operator [14, 11] - [14, 21]
+          (identifier [14, 11] - [14, 16])
+          (integer [14, 20] - [14, 21]))))))
