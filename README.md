@@ -45,7 +45,7 @@ Results can be aggregated by file or class, producing average, total, or categor
 ### Build
 
 ```bash
-git clone https://github.com/<your-username>/Analyser.git
+git clone https://github.com/Tim-Kids/cpp-middle-project-sprint-4_ast_analyser.git
 cd Analyser
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build -j
@@ -58,7 +58,7 @@ cmake --build build -j
 Run Analyser with a list of Python files to analyze:
 
 ```bash
-./analyser file1.py file2.py ...
+./analyser -f file1.py file2.py ...
 ```
 
 **Example output:**
