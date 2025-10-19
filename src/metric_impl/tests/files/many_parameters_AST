@@ -1,0 +1,20 @@
+(module [0, 0] - [1, 21]
+  (function_definition [0, 0] - [1, 21]
+    name: (identifier [0, 4] - [0, 28])
+    parameters: (parameters [0, 28] - [0, 56]
+      (identifier [0, 29] - [0, 30])
+      (identifier [0, 32] - [0, 33])
+      (default_parameter [0, 35] - [0, 38]
+        name: (identifier [0, 35] - [0, 36])
+        value: (integer [0, 37] - [0, 38]))
+      (list_splat_pattern [0, 40] - [0, 45]
+        (identifier [0, 41] - [0, 45]))
+      (dictionary_splat_pattern [0, 47] - [0, 55]
+        (identifier [0, 49] - [0, 55])))
+    body: (block [1, 4] - [1, 21]
+      (assert_statement [1, 4] - [1, 21]
+        (comparison_operator [1, 11] - [1, 21]
+          (binary_operator [1, 11] - [1, 16]
+            left: (identifier [1, 11] - [1, 12])
+            right: (identifier [1, 15] - [1, 16]))
+          (identifier [1, 20] - [1, 21]))))))

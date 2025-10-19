@@ -1,0 +1,85 @@
+Analyser
+   ├── files
+   │   ├── sample.py
+   │   ├── sample_AST
+   │   ├── simple.py
+   │   └── simple_AST
+   ├── include
+   │   ├── metric_accumulator_impl
+   │   │   ├── accumulators.hpp
+   │   │   ├── average_accumulator.hpp
+   │   │   ├── categorical_accumulator.hpp
+   │   │   └── sum_average_accumulator.hpp
+   │   ├── metric_impl
+   │   │   ├── code_lines_count.hpp
+   │   │   ├── cyclomatic_complexity.hpp
+   │   │   ├── metrics.hpp
+   │   │   ├── naming_style.hpp
+   │   │   └── parameters_count.hpp
+   │   ├── analyse.hpp
+   │   ├── cmd_options.hpp
+   │   ├── file.hpp
+   │   ├── function.hpp
+   │   ├── helpers.hpp
+   │   ├── metric.hpp
+   │   ├── metric_accumulator.hpp
+   │   └── utils.hpp
+   ├── src
+   │   ├── metric_accumulator_impl
+   │   │   ├── tests
+   │   │   │   ├── average_accumulator.cpp
+   │   │   │   ├── categorical_accumulator.cpp
+   │   │   │   └── sum_average_accumulator.cpp
+   │   │   ├── CMakeLists.txt
+   │   │   ├── average_accumulator.cpp
+   │   │   ├── categorical_accumulator.cpp
+   │   │   └── sum_average_accumulator.cpp
+   │   ├── metric_impl
+   │   │   ├── tests
+   │   │   │   ├── files
+   │   │   │   │   ├── comments.py
+   │   │   │   │   ├── comments_AST
+   │   │   │   │   ├── exceptions.py
+   │   │   │   │   ├── exceptions_AST
+   │   │   │   │   ├── if.py
+   │   │   │   │   ├── if_AST
+   │   │   │   │   ├── loops.py
+   │   │   │   │   ├── loops_AST
+   │   │   │   │   ├── many_lines.py
+   │   │   │   │   ├── many_lines_AST
+   │   │   │   │   ├── many_parameters.py
+   │   │   │   │   ├── many_parameters_AST
+   │   │   │   │   ├── match_case.py
+   │   │   │   │   ├── match_case_AST
+   │   │   │   │   ├── nested_if.py
+   │   │   │   │   ├── nested_if__AST
+   │   │   │   │   ├── simple.py
+   │   │   │   │   ├── simple_AST
+   │   │   │   │   ├── ternary.py
+   │   │   │   │   └── ternary_AST
+   │   │   │   ├── code_lines_count.cpp
+   │   │   │   ├── cyclomatic_complexity.cpp
+   │   │   │   ├── naming_style.cpp
+   │   │   │   └── parameters_count.cpp
+   │   │   ├── CMakeLists.txt
+   │   │   ├── code_lines_count.cpp
+   │   │   ├── cyclomatic_complexity.cpp
+   │   │   ├── naming_style.cpp
+   │   │   └── parameters_count.cpp
+   │   ├── CMakeLists.txt
+   │   ├── cmd_options.cpp
+   │   ├── file.cpp
+   │   ├── function.cpp
+   │   ├── metric.cpp
+   │   └── metric_accumulator.cpp
+   ├── third_party
+   │   ├── range-v3
+   │   ├── CMakeLists.txt
+   │   └── print_dir_tree.cpp
+   ├── CMakeLists.txt
+   ├── Dockerfile
+   ├── LICENSE
+   ├── README.md
+   ├── main.cpp
+   ├── project_blueprint.txt
+   └── tree-sitter-sample.txt

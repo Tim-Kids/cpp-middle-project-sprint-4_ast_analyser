@@ -1,23 +1,38 @@
+#include <algorithm>
+
 #include "metric_impl/cyclomatic_complexity.hpp"
 
-#include <unistd.h>
+namespace analyser::metric::metric_impl {
 
-#include <algorithm>
-#include <array>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <fstream>
-#include <functional>
-#include <iostream>
-#include <ranges>
-#include <sstream>
-#include <string>
-#include <variant>
-#include <vector>
+std::string CyclomaticComplexityMetric::Name() const noexcept {
+    return "CyclomaticComplexity";
+}
 
-namespace analyzer::metric::metric_impl {
+static constexpr std::array<std::string_view, 13> cyclomatic_complexity_metric_names = {
+    "(try_statement",
+    "(except_clause",
+    "(finally_clause",
+    "(if_statement",
+    "(elif_clause",
+    "alternative: (elif_clause",
+    "(for_statement",
+    "(while_statement",
+    "(match_statement",
+    "(case_clause",
+    "alternative: (case_clause",
+    "(conditional_expression",
+    "(lambda"
+};
 
-// здесь ваш код
+static bool IsCyclomaticValue(std::string_view value) {
+    return rs::any_of(cyclomatic_complexity_metric_names, [&](std::string_view name) {
+        return value.starts_with(name);
+    });
+}
 
-}  // namespace analyzer::metric::metric_impl
+MetricResult::ValueType CyclomaticComplexityMetric::CalculateImpl(const function::Function& f) const {
+    auto filtered = Filter(f);
+    auto c        = std::ranges::count_if(filtered, IsCyclomaticValue);
+    return static_cast<int>(basic_complexity + c);
+}
+} // namespace analyser::metric::metric_impl

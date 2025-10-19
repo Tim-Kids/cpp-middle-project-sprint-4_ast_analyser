@@ -1,0 +1,32 @@
+(module [0, 0] - [7, 0]
+  (class_definition [0, 0] - [6, 16]
+    name: (identifier [0, 6] - [0, 15])
+    body: (block [1, 4] - [6, 16]
+      (function_definition [1, 4] - [2, 20]
+        name: (identifier [1, 8] - [1, 11])
+        parameters: (parameters [1, 11] - [1, 23]
+          (identifier [1, 12] - [1, 16])
+          (identifier [1, 18] - [1, 19])
+          (identifier [1, 21] - [1, 22]))
+        body: (block [2, 8] - [2, 20]
+          (return_statement [2, 8] - [2, 20]
+            (binary_operator [2, 15] - [2, 20]
+              left: (identifier [2, 15] - [2, 16])
+              right: (identifier [2, 19] - [2, 20])))))
+      (function_definition [4, 4] - [5, 19]
+        name: (identifier [4, 8] - [4, 16])
+        parameters: (parameters [4, 16] - [4, 31]
+          (identifier [4, 17] - [4, 21])
+          (identifier [4, 23] - [4, 24])
+          (identifier [4, 26] - [4, 27])
+          (identifier [4, 29] - [4, 30]))
+        body: (block [5, 6] - [5, 19]
+          (assignment [5, 6] - [5, 19]
+            left: (identifier [5, 6] - [5, 7])
+            right: (binary_operator [5, 10] - [5, 19]
+              left: (binary_operator [5, 10] - [5, 15]
+                left: (identifier [5, 10] - [5, 11])
+                right: (identifier [5, 14] - [5, 15]))
+              right: (identifier [5, 18] - [5, 19])))))
+      (return_statement [6, 8] - [6, 16]
+        (identifier [6, 15] - [6, 16])))))

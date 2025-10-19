@@ -1,0 +1,35 @@
+(module [0, 0] - [6, 15]
+  (function_definition [0, 0] - [6, 15]
+    name: (identifier [0, 4] - [0, 13])
+    parameters: (parameters [0, 13] - [0, 16]
+      (identifier [0, 14] - [0, 15]))
+    body: (block [1, 4] - [6, 15]
+      (for_statement [1, 4] - [5, 18]
+        left: (identifier [1, 8] - [1, 9])
+        right: (call [1, 13] - [1, 21]
+          function: (identifier [1, 13] - [1, 18])
+          arguments: (argument_list [1, 18] - [1, 21]
+            (identifier [1, 19] - [1, 20])))
+        body: (block [2, 8] - [5, 18]
+          (while_statement [2, 8] - [5, 18]
+            condition: (parenthesized_expression [2, 14] - [2, 21]
+              (comparison_operator [2, 15] - [2, 20]
+                (identifier [2, 15] - [2, 16])
+                (identifier [2, 19] - [2, 20])))
+            body: (block [3, 12] - [5, 18]
+              (if_statement [3, 12] - [4, 24]
+                condition: (comparison_operator [3, 15] - [3, 25]
+                  (binary_operator [3, 15] - [3, 20]
+                    left: (identifier [3, 15] - [3, 16])
+                    right: (integer [3, 19] - [3, 20]))
+                  (integer [3, 24] - [3, 25]))
+                consequence: (block [4, 16] - [4, 24]
+                  (call [4, 16] - [4, 24]
+                    function: (identifier [4, 16] - [4, 21])
+                    arguments: (argument_list [4, 21] - [4, 24]
+                      (identifier [4, 22] - [4, 23])))))
+              (augmented_assignment [5, 12] - [5, 18]
+                left: (identifier [5, 12] - [5, 13])
+                right: (integer [5, 17] - [5, 18]))))))
+      (return_statement [6, 4] - [6, 15]
+        (true [6, 11] - [6, 15])))))

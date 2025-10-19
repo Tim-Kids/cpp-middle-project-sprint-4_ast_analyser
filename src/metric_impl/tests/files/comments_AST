@@ -1,0 +1,22 @@
+(module [0, 0] - [6, 18]
+  (function_definition [0, 0] - [6, 18]
+    name: (identifier [0, 4] - [0, 17])
+    parameters: (parameters [0, 17] - [0, 31]
+      (identifier [0, 18] - [0, 24])
+      (identifier [0, 26] - [0, 27])
+      (identifier [0, 29] - [0, 30]))
+    (comment [1, 4] - [1, 35])
+    body: (block [2, 4] - [6, 18]
+      (assignment [2, 4] - [2, 10]
+        left: (identifier [2, 4] - [2, 5])
+        right: (integer [2, 8] - [2, 10]))
+      (comment [3, 4] - [3, 42])
+      (comment [4, 4] - [4, 42])
+      (assignment [5, 4] - [5, 10]
+        left: (identifier [5, 4] - [5, 5])
+        right: (integer [5, 8] - [5, 10]))
+      (assignment [6, 4] - [6, 18]
+        left: (identifier [6, 4] - [6, 10])
+        right: (binary_operator [6, 13] - [6, 18]
+          left: (identifier [6, 13] - [6, 14])
+          right: (identifier [6, 17] - [6, 18]))))))

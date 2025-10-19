@@ -1,0 +1,35 @@
+(module [0, 0] - [8, 0]
+  (function_definition [0, 0] - [7, 35]
+    name: (identifier [0, 4] - [0, 18])
+    parameters: (parameters [0, 18] - [0, 20])
+    body: (block [1, 4] - [7, 35]
+      (try_statement [1, 4] - [7, 35]
+        body: (block [2, 8] - [3, 23]
+          (assignment [2, 8] - [2, 17]
+            left: (identifier [2, 8] - [2, 9])
+            right: (binary_operator [2, 12] - [2, 17]
+              left: (integer [2, 12] - [2, 13])
+              right: (integer [2, 16] - [2, 17])))
+          (assert_statement [3, 8] - [3, 23]
+            (comparison_operator [3, 15] - [3, 23]
+              (identifier [3, 15] - [3, 16])
+              (identifier [3, 20] - [3, 23]))))
+        (except_clause [4, 4] - [5, 29]
+          value: (identifier [4, 11] - [4, 28])
+          (block [5, 8] - [5, 29]
+            (call [5, 8] - [5, 29]
+              function: (identifier [5, 8] - [5, 13])
+              arguments: (argument_list [5, 13] - [5, 29]
+                (string [5, 14] - [5, 28]
+                  (string_start [5, 14] - [5, 15])
+                  (string_content [5, 15] - [5, 27])
+                  (string_end [5, 27] - [5, 28]))))))
+        (finally_clause [6, 4] - [7, 35]
+          (block [7, 8] - [7, 35]
+            (call [7, 8] - [7, 35]
+              function: (identifier [7, 8] - [7, 13])
+              arguments: (argument_list [7, 13] - [7, 35]
+                (string [7, 14] - [7, 34]
+                  (string_start [7, 14] - [7, 15])
+                  (string_content [7, 15] - [7, 33])
+                  (string_end [7, 33] - [7, 34]))))))))))

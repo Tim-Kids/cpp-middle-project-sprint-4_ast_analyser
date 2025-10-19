@@ -1,0 +1,26 @@
+(module [0, 0] - [1, 70]
+  (function_definition [0, 0] - [1, 70]
+    name: (identifier [0, 4] - [0, 16])
+    parameters: (parameters [0, 16] - [0, 19]
+      (identifier [0, 17] - [0, 18]))
+    body: (block [1, 4] - [1, 70]
+      (return_statement [1, 4] - [1, 70]
+        (conditional_expression [1, 11] - [1, 70]
+          (string [1, 11] - [1, 21]
+            (string_start [1, 11] - [1, 12])
+            (string_content [1, 12] - [1, 20])
+            (string_end [1, 20] - [1, 21]))
+          (comparison_operator [1, 25] - [1, 50]
+            (parenthesized_expression [1, 25] - [1, 46]
+              (conditional_expression [1, 26] - [1, 45]
+                (integer [1, 26] - [1, 28])
+                (comparison_operator [1, 32] - [1, 37]
+                  (identifier [1, 32] - [1, 33])
+                  (integer [1, 36] - [1, 37]))
+                (unary_operator [1, 43] - [1, 45]
+                  argument: (integer [1, 44] - [1, 45]))))
+            (integer [1, 49] - [1, 50]))
+          (string [1, 56] - [1, 70]
+            (string_start [1, 56] - [1, 57])
+            (string_content [1, 57] - [1, 69])
+            (string_end [1, 69] - [1, 70])))))))

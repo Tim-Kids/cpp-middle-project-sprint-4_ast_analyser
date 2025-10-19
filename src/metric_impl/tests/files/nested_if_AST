@@ -1,0 +1,35 @@
+(module [0, 0] - [9, 0]
+  (function_definition [0, 0] - [8, 13]
+    name: (identifier [0, 4] - [0, 16])
+    parameters: (parameters [0, 16] - [0, 22]
+      (identifier [0, 17] - [0, 18])
+      (identifier [0, 20] - [0, 21]))
+    body: (block [1, 4] - [8, 13]
+      (if_statement [1, 4] - [7, 20]
+        condition: (comparison_operator [1, 7] - [1, 12]
+          (identifier [1, 7] - [1, 8])
+          (integer [1, 11] - [1, 12]))
+        consequence: (block [2, 8] - [7, 20]
+          (if_statement [2, 8] - [7, 20]
+            condition: (comparison_operator [2, 11] - [2, 16]
+              (identifier [2, 11] - [2, 12])
+              (integer [2, 15] - [2, 16]))
+            consequence: (block [3, 12] - [3, 25]
+              (assert_statement [3, 12] - [3, 25]
+                (comparison_operator [3, 19] - [3, 25]
+                  (identifier [3, 19] - [3, 20])
+                  (identifier [3, 24] - [3, 25]))))
+            alternative: (elif_clause [4, 8] - [5, 20]
+              condition: (comparison_operator [4, 13] - [4, 18]
+                (identifier [4, 13] - [4, 14])
+                (integer [4, 17] - [4, 18]))
+              consequence: (block [5, 12] - [5, 20]
+                (return_statement [5, 12] - [5, 20]
+                  (integer [5, 19] - [5, 20]))))
+            alternative: (else_clause [6, 8] - [7, 20]
+              body: (block [7, 12] - [7, 20]
+                (return_statement [7, 12] - [7, 20]
+                  (integer [7, 19] - [7, 20])))))))
+      (return_statement [8, 4] - [8, 13]
+        (unary_operator [8, 11] - [8, 13]
+          argument: (integer [8, 12] - [8, 13]))))))

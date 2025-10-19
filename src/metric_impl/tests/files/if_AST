@@ -1,0 +1,15 @@
+(module [0, 0] - [3, 16]
+  (function_definition [0, 0] - [3, 16]
+    name: (identifier [0, 4] - [0, 10])
+    parameters: (parameters [0, 10] - [0, 13]
+      (identifier [0, 11] - [0, 12]))
+    body: (block [1, 4] - [3, 16]
+      (if_statement [1, 4] - [2, 19]
+        condition: (comparison_operator [1, 7] - [1, 12]
+          (identifier [1, 7] - [1, 8])
+          (integer [1, 11] - [1, 12]))
+        consequence: (block [2, 8] - [2, 19]
+          (return_statement [2, 8] - [2, 19]
+            (true [2, 15] - [2, 19]))))
+      (return_statement [3, 4] - [3, 16]
+        (false [3, 11] - [3, 16])))))
