@@ -15,7 +15,7 @@ void AverageAccumulator::Accumulate(const metric::MetricResult& metric_result) {
 }
 
 void AverageAccumulator::Finalize() noexcept {
-    average_ = count_ == 0 ? 0.0 : static_cast<double>(sum_) / static_cast<double>(count_);
+    average_     = count_ == 0 ? 0.0 : static_cast<double>(sum_) / static_cast<double>(count_);
     is_finalized = true;
 }
 
@@ -34,4 +34,4 @@ double AverageAccumulator::Get() const noexcept {
     return "avg = " + std::to_string(Get());
 }
 
-}  // namespace analyser::metric_accumulator::metric_accumulator_impl
+} // namespace analyser::metric_accumulator::metric_accumulator_impl

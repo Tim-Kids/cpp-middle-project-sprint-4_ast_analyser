@@ -46,4 +46,4 @@ TEST(CategoricalAccumulator, ThrowsOnWrongType) {
     metric::MetricResult wrong{"NamingStyle", 123};
     EXPECT_THROW(acc.Accumulate(wrong), std::runtime_error);
 }
-}  // namespace analyser::metric_accumulator::metric_accumulator_impl::test
+} // namespace analyser::metric_accumulator::metric_accumulator_impl::test

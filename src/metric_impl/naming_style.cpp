@@ -8,26 +8,29 @@
 namespace analyser::metric::metric_impl {
 
 static std::string DetermineNamingStyle(std::string_view name) {
-    bool has_underscore = name.contains('_');
-    bool has_uppercase  = rs::any_of(name, [](char c) { return std::isupper(static_cast<unsigned char>(c)); });
-    bool has_lowercase  = rs::any_of(name, [](char c) { return std::islower(static_cast<unsigned char>(c)); });
+    const bool underscore = name.contains('_');
+    const bool upper      = rs::any_of(name, [](unsigned char c) {
+        return std::isupper(c);
+    });
+    const bool lower = rs::any_of(name, [](unsigned char c) {
+        return std::islower(c);
+    });
 
-    if(has_underscore && has_lowercase && !has_uppercase) {
-        return "snake_case";
-    }
-    if(has_uppercase && has_lowercase && !has_underscore && std::isupper(name.front())) {
-        return "PascalCase";
-    }
-    if(has_uppercase && has_lowercase && !has_underscore && std::islower(name.front())) {
-        return "camelCase";
-    }
-    if(has_lowercase && !has_uppercase && !has_underscore) {
-        return "lowercase";
-    }
-    if(!has_lowercase && has_uppercase && !has_underscore) {
-        return "UPPERCASE";
-    }
-    return "unknown";
+    using namespace std::string_literals;
+
+    if(underscore)
+        return (lower && !upper) ? "snake_case"s : "unknown"s;
+
+    if(upper && lower)
+        return std::isupper(static_cast<unsigned char>(name.front())) ? "PascalCase"s : "camelCase"s;
+
+    if(lower && !upper)
+        return "lowercase"s;
+
+    if(upper && !lower)
+        return "UPPERCASE"s;
+
+    return "unknown"s;
 }
 
 MetricResult::ValueType NamingStyleMetric::CalculateImpl(const function::Function& f) const {
@@ -37,4 +40,4 @@ MetricResult::ValueType NamingStyleMetric::CalculateImpl(const function::Functio
 std::string NamingStyleMetric::Name() const noexcept {
     return "NamingStyle";
 }
-}  // namespace analyser::metric::metric_impl
+} // namespace analyser::metric::metric_impl

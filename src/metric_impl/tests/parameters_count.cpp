@@ -81,4 +81,4 @@ TEST(ParametersCountMetric, HandlesTernaryFile) {
     EXPECT_EQ(value, 1);
 }
 
-}  // namespace analyser::metric::metric_impl
+} // namespace analyser::metric::metric_impl

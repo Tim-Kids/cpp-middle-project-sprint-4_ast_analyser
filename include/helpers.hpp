@@ -12,7 +12,7 @@
 namespace helper {
 
 inline std::string MakePyFileName(const std::string& path) {
-    auto name = path;
+    auto name                         = path;
     constexpr std::string_view suffix = "_AST";
     std::string name_py{};
     if(name.ends_with(suffix)) {
@@ -51,7 +51,7 @@ template<class T> std::string GetStr(const T& metricResultValue) {
     }
 }
 
-inline const std::pair<std::string, std::string> many_parameters {
+inline const std::pair<std::string, std::string> many_parameters{
     "def __test_multiparameters__(a, b, c=5, *args, **kwargs):\n"
     "    assert a + b == c",
 
@@ -76,138 +76,138 @@ inline const std::pair<std::string, std::string> many_parameters {
     "            right: (identifier [1, 15] - [1, 16]))\n"
     "          (identifier [1, 20] - [1, 21]))))))"};
 
-inline const std::pair<std::string, std::string> simple {"def test_simple():\n"
-                                                         "    x = 1\n"
-                                                         "    y = 2\n"
-                                                         "    z = x + y\n"
-                                                         "    print(z)\n"
-                                                         "\n"
-                                                         "    assert z == 3",
+inline const std::pair<std::string, std::string> simple{"def test_simple():\n"
+                                                        "    x = 1\n"
+                                                        "    y = 2\n"
+                                                        "    z = x + y\n"
+                                                        "    print(z)\n"
+                                                        "\n"
+                                                        "    assert z == 3",
 
-                                                         "(module [0, 0] - [6, 17]\n"
-                                                         "  (function_definition [0, 0] - [6, 17]\n"
-                                                         "    name: (identifier [0, 4] - [0, 15])\n"
-                                                         "    parameters: (parameters [0, 15] - [0, 17])\n"
-                                                         "    body: (block [1, 4] - [6, 17]\n"
-                                                         "      (assignment [1, 4] - [1, 9]\n"
-                                                         "        left: (identifier [1, 4] - [1, 5])\n"
-                                                         "        right: (integer [1, 8] - [1, 9]))\n"
-                                                         "      (assignment [2, 4] - [2, 9]\n"
-                                                         "        left: (identifier [2, 4] - [2, 5])\n"
-                                                         "        right: (integer [2, 8] - [2, 9]))\n"
-                                                         "      (assignment [3, 4] - [3, 13]\n"
-                                                         "        left: (identifier [3, 4] - [3, 5])\n"
-                                                         "        right: (binary_operator [3, 8] - [3, 13]\n"
-                                                         "          left: (identifier [3, 8] - [3, 9])\n"
-                                                         "          right: (identifier [3, 12] - [3, 13])))\n"
-                                                         "      (call [4, 4] - [4, 12]\n"
-                                                         "        function: (identifier [4, 4] - [4, 9])\n"
-                                                         "        arguments: (argument_list [4, 9] - [4, 12]\n"
-                                                         "          (identifier [4, 10] - [4, 11])))\n"
-                                                         "      (assert_statement [6, 4] - [6, 17]\n"
-                                                         "        (comparison_operator [6, 11] - [6, 17]\n"
-                                                         "          (identifier [6, 11] - [6, 12])\n"
-                                                         "          (integer [6, 16] - [6, 17]))))))"};
+                                                        "(module [0, 0] - [6, 17]\n"
+                                                        "  (function_definition [0, 0] - [6, 17]\n"
+                                                        "    name: (identifier [0, 4] - [0, 15])\n"
+                                                        "    parameters: (parameters [0, 15] - [0, 17])\n"
+                                                        "    body: (block [1, 4] - [6, 17]\n"
+                                                        "      (assignment [1, 4] - [1, 9]\n"
+                                                        "        left: (identifier [1, 4] - [1, 5])\n"
+                                                        "        right: (integer [1, 8] - [1, 9]))\n"
+                                                        "      (assignment [2, 4] - [2, 9]\n"
+                                                        "        left: (identifier [2, 4] - [2, 5])\n"
+                                                        "        right: (integer [2, 8] - [2, 9]))\n"
+                                                        "      (assignment [3, 4] - [3, 13]\n"
+                                                        "        left: (identifier [3, 4] - [3, 5])\n"
+                                                        "        right: (binary_operator [3, 8] - [3, 13]\n"
+                                                        "          left: (identifier [3, 8] - [3, 9])\n"
+                                                        "          right: (identifier [3, 12] - [3, 13])))\n"
+                                                        "      (call [4, 4] - [4, 12]\n"
+                                                        "        function: (identifier [4, 4] - [4, 9])\n"
+                                                        "        arguments: (argument_list [4, 9] - [4, 12]\n"
+                                                        "          (identifier [4, 10] - [4, 11])))\n"
+                                                        "      (assert_statement [6, 4] - [6, 17]\n"
+                                                        "        (comparison_operator [6, 11] - [6, 17]\n"
+                                                        "          (identifier [6, 11] - [6, 12])\n"
+                                                        "          (integer [6, 16] - [6, 17]))))))"};
 
-inline const std::pair<std::string, std::string> many_lines {"def testmultiline():\n"
-                                                             "    data = [\n"
-                                                             "        1, 2, 3,\n"
-                                                             "        4, 5, 6\n"
-                                                             "    ]\n"
-                                                             "    total = sum(data)\n"
-                                                             "    \n"
-                                                             "    print(\"Больше 10\")\n"
-                                                             "    print(\"Меньше или равно 10\")\n"
-                                                             "        \n"
-                                                             "    call_unexisting_function1(total)\n"
-                                                             "    call_unexisting_function2(total)\n"
-                                                             "    call_unexisting_function3(total)\n"
-                                                             "\n"
-                                                             "    assert total == 6",
+inline const std::pair<std::string, std::string> many_lines{"def testmultiline():\n"
+                                                            "    data = [\n"
+                                                            "        1, 2, 3,\n"
+                                                            "        4, 5, 6\n"
+                                                            "    ]\n"
+                                                            "    total = sum(data)\n"
+                                                            "    \n"
+                                                            "    print(\"Больше 10\")\n"
+                                                            "    print(\"Меньше или равно 10\")\n"
+                                                            "        \n"
+                                                            "    call_unexisting_function1(total)\n"
+                                                            "    call_unexisting_function2(total)\n"
+                                                            "    call_unexisting_function3(total)\n"
+                                                            "\n"
+                                                            "    assert total == 6",
 
-                                                             "(module [0, 0] - [14, 21]\n"
-                                                             "  (function_definition [0, 0] - [14, 21]\n"
-                                                             "    name: (identifier [0, 4] - [0, 17])\n"
-                                                             "    parameters: (parameters [0, 17] - [0, 19])\n"
-                                                             "    body: (block [1, 4] - [14, 21]\n"
-                                                             "      (assignment [1, 4] - [4, 5]\n"
-                                                             "        left: (identifier [1, 4] - [1, 8])\n"
-                                                             "        right: (list [1, 11] - [4, 5]\n"
-                                                             "          (integer [2, 8] - [2, 9])\n"
-                                                             "          (integer [2, 11] - [2, 12])\n"
-                                                             "          (integer [2, 14] - [2, 15])\n"
-                                                             "          (integer [3, 8] - [3, 9])\n"
-                                                             "          (integer [3, 11] - [3, 12])\n"
-                                                             "          (integer [3, 14] - [3, 15])))\n"
-                                                             "      (assignment [5, 4] - [5, 21]\n"
-                                                             "        left: (identifier [5, 4] - [5, 9])\n"
-                                                             "        right: (call [5, 12] - [5, 21]\n"
-                                                             "          function: (identifier [5, 12] - [5, 15])\n"
-                                                             "          arguments: (argument_list [5, 15] - [5, 21]\n"
-                                                             "            (identifier [5, 16] - [5, 20]))))\n"
-                                                             "      (call [7, 4] - [7, 28]\n"
-                                                             "        function: (identifier [7, 4] - [7, 9])\n"
-                                                             "        arguments: (argument_list [7, 9] - [7, 28]\n"
-                                                             "          (string [7, 10] - [7, 27]\n"
-                                                             "            (string_start [7, 10] - [7, 11])\n"
-                                                             "            (string_content [7, 11] - [7, 26])\n"
-                                                             "            (string_end [7, 26] - [7, 27]))))\n"
-                                                             "      (call [8, 4] - [8, 46]\n"
-                                                             "        function: (identifier [8, 4] - [8, 9])\n"
-                                                             "        arguments: (argument_list [8, 9] - [8, 46]\n"
-                                                             "          (string [8, 10] - [8, 45]\n"
-                                                             "            (string_start [8, 10] - [8, 11])\n"
-                                                             "            (string_content [8, 11] - [8, 44])\n"
-                                                             "            (string_end [8, 44] - [8, 45]))))\n"
-                                                             "      (call [10, 4] - [10, 36]\n"
-                                                             "        function: (identifier [10, 4] - [10, 29])\n"
-                                                             "        arguments: (argument_list [10, 29] - [10, 36]\n"
-                                                             "          (identifier [10, 30] - [10, 35])))\n"
-                                                             "      (call [11, 4] - [11, 36]\n"
-                                                             "        function: (identifier [11, 4] - [11, 29])\n"
-                                                             "        arguments: (argument_list [11, 29] - [11, 36]\n"
-                                                             "          (identifier [11, 30] - [11, 35])))\n"
-                                                             "      (call [12, 4] - [12, 36]\n"
-                                                             "        function: (identifier [12, 4] - [12, 29])\n"
-                                                             "        arguments: (argument_list [12, 29] - [12, 36]\n"
-                                                             "          (identifier [12, 30] - [12, 35])))\n"
-                                                             "      (assert_statement [14, 4] - [14, 21]\n"
-                                                             "        (comparison_operator [14, 11] - [14, 21]\n"
-                                                             "          (identifier [14, 11] - [14, 16])\n"
-                                                             "          (integer [14, 20] - [14, 21]))))))"};
+                                                            "(module [0, 0] - [14, 21]\n"
+                                                            "  (function_definition [0, 0] - [14, 21]\n"
+                                                            "    name: (identifier [0, 4] - [0, 17])\n"
+                                                            "    parameters: (parameters [0, 17] - [0, 19])\n"
+                                                            "    body: (block [1, 4] - [14, 21]\n"
+                                                            "      (assignment [1, 4] - [4, 5]\n"
+                                                            "        left: (identifier [1, 4] - [1, 8])\n"
+                                                            "        right: (list [1, 11] - [4, 5]\n"
+                                                            "          (integer [2, 8] - [2, 9])\n"
+                                                            "          (integer [2, 11] - [2, 12])\n"
+                                                            "          (integer [2, 14] - [2, 15])\n"
+                                                            "          (integer [3, 8] - [3, 9])\n"
+                                                            "          (integer [3, 11] - [3, 12])\n"
+                                                            "          (integer [3, 14] - [3, 15])))\n"
+                                                            "      (assignment [5, 4] - [5, 21]\n"
+                                                            "        left: (identifier [5, 4] - [5, 9])\n"
+                                                            "        right: (call [5, 12] - [5, 21]\n"
+                                                            "          function: (identifier [5, 12] - [5, 15])\n"
+                                                            "          arguments: (argument_list [5, 15] - [5, 21]\n"
+                                                            "            (identifier [5, 16] - [5, 20]))))\n"
+                                                            "      (call [7, 4] - [7, 28]\n"
+                                                            "        function: (identifier [7, 4] - [7, 9])\n"
+                                                            "        arguments: (argument_list [7, 9] - [7, 28]\n"
+                                                            "          (string [7, 10] - [7, 27]\n"
+                                                            "            (string_start [7, 10] - [7, 11])\n"
+                                                            "            (string_content [7, 11] - [7, 26])\n"
+                                                            "            (string_end [7, 26] - [7, 27]))))\n"
+                                                            "      (call [8, 4] - [8, 46]\n"
+                                                            "        function: (identifier [8, 4] - [8, 9])\n"
+                                                            "        arguments: (argument_list [8, 9] - [8, 46]\n"
+                                                            "          (string [8, 10] - [8, 45]\n"
+                                                            "            (string_start [8, 10] - [8, 11])\n"
+                                                            "            (string_content [8, 11] - [8, 44])\n"
+                                                            "            (string_end [8, 44] - [8, 45]))))\n"
+                                                            "      (call [10, 4] - [10, 36]\n"
+                                                            "        function: (identifier [10, 4] - [10, 29])\n"
+                                                            "        arguments: (argument_list [10, 29] - [10, 36]\n"
+                                                            "          (identifier [10, 30] - [10, 35])))\n"
+                                                            "      (call [11, 4] - [11, 36]\n"
+                                                            "        function: (identifier [11, 4] - [11, 29])\n"
+                                                            "        arguments: (argument_list [11, 29] - [11, 36]\n"
+                                                            "          (identifier [11, 30] - [11, 35])))\n"
+                                                            "      (call [12, 4] - [12, 36]\n"
+                                                            "        function: (identifier [12, 4] - [12, 29])\n"
+                                                            "        arguments: (argument_list [12, 29] - [12, 36]\n"
+                                                            "          (identifier [12, 30] - [12, 35])))\n"
+                                                            "      (assert_statement [14, 4] - [14, 21]\n"
+                                                            "        (comparison_operator [14, 11] - [14, 21]\n"
+                                                            "          (identifier [14, 11] - [14, 16])\n"
+                                                            "          (integer [14, 20] - [14, 21]))))))"};
 
-inline const std::pair<std::string, std::string> comments {"def Func_comments(result, a, b):\n"
-                                                           "    # Это комментарий\n"
-                                                           "    a = 10\n"
-                                                           "    # Это ещё комментарий\n"
-                                                           "    # Это ещё комментарий\n"
-                                                           "    b = 20\n"
-                                                           "    result = a + b",
+inline const std::pair<std::string, std::string> comments{"def Func_comments(result, a, b):\n"
+                                                          "    # Это комментарий\n"
+                                                          "    a = 10\n"
+                                                          "    # Это ещё комментарий\n"
+                                                          "    # Это ещё комментарий\n"
+                                                          "    b = 20\n"
+                                                          "    result = a + b",
 
-                                                           "(module [0, 0] - [6, 18]\n"
-                                                           "  (function_definition [0, 0] - [6, 18]\n"
-                                                           "    name: (identifier [0, 4] - [0, 17])\n"
-                                                           "    parameters: (parameters [0, 17] - [0, 31]\n"
-                                                           "      (identifier [0, 18] - [0, 24])\n"
-                                                           "      (identifier [0, 26] - [0, 27])\n"
-                                                           "      (identifier [0, 29] - [0, 30]))\n"
-                                                           "    (comment [1, 4] - [1, 35])\n"
-                                                           "    body: (block [2, 4] - [6, 18]\n"
-                                                           "      (assignment [2, 4] - [2, 10]\n"
-                                                           "        left: (identifier [2, 4] - [2, 5])\n"
-                                                           "        right: (integer [2, 8] - [2, 10]))\n"
-                                                           "      (comment [3, 4] - [3, 42])\n"
-                                                           "      (comment [4, 4] - [4, 42])\n"
-                                                           "      (assignment [5, 4] - [5, 10]\n"
-                                                           "        left: (identifier [5, 4] - [5, 5])\n"
-                                                           "        right: (integer [5, 8] - [5, 10]))\n"
-                                                           "      (assignment [6, 4] - [6, 18]\n"
-                                                           "        left: (identifier [6, 4] - [6, 10])\n"
-                                                           "        right: (binary_operator [6, 13] - [6, 18]\n"
-                                                           "          left: (identifier [6, 13] - [6, 14])\n"
-                                                           "          right: (identifier [6, 17] - [6, 18]))))))"};
+                                                          "(module [0, 0] - [6, 18]\n"
+                                                          "  (function_definition [0, 0] - [6, 18]\n"
+                                                          "    name: (identifier [0, 4] - [0, 17])\n"
+                                                          "    parameters: (parameters [0, 17] - [0, 31]\n"
+                                                          "      (identifier [0, 18] - [0, 24])\n"
+                                                          "      (identifier [0, 26] - [0, 27])\n"
+                                                          "      (identifier [0, 29] - [0, 30]))\n"
+                                                          "    (comment [1, 4] - [1, 35])\n"
+                                                          "    body: (block [2, 4] - [6, 18]\n"
+                                                          "      (assignment [2, 4] - [2, 10]\n"
+                                                          "        left: (identifier [2, 4] - [2, 5])\n"
+                                                          "        right: (integer [2, 8] - [2, 10]))\n"
+                                                          "      (comment [3, 4] - [3, 42])\n"
+                                                          "      (comment [4, 4] - [4, 42])\n"
+                                                          "      (assignment [5, 4] - [5, 10]\n"
+                                                          "        left: (identifier [5, 4] - [5, 5])\n"
+                                                          "        right: (integer [5, 8] - [5, 10]))\n"
+                                                          "      (assignment [6, 4] - [6, 18]\n"
+                                                          "        left: (identifier [6, 4] - [6, 10])\n"
+                                                          "        right: (binary_operator [6, 13] - [6, 18]\n"
+                                                          "          left: (identifier [6, 13] - [6, 14])\n"
+                                                          "          right: (identifier [6, 17] - [6, 18]))))))"};
 
-inline const std::pair<std::string, std::string> exceptions {
+inline const std::pair<std::string, std::string> exceptions{
     "def Try_Exceptions():\n"
     "    try:\n"
     "        x = 1 / 0\n"
@@ -253,28 +253,28 @@ inline const std::pair<std::string, std::string> exceptions {
     "                  (string_content [7, 15] - [7, 33])\n"
     "                  (string_end [7, 33] - [7, 34]))))))))))"};
 
-inline const std::pair<std::string, std::string> iff {"def testIf(x):\n"
-                                                      "    if x > 0:\n"
-                                                      "        return True\n"
-                                                      "    return False",
+inline const std::pair<std::string, std::string> iff{"def testIf(x):\n"
+                                                     "    if x > 0:\n"
+                                                     "        return True\n"
+                                                     "    return False",
 
-                                                      "(module [0, 0] - [3, 16]\n"
-                                                      "  (function_definition [0, 0] - [3, 16]\n"
-                                                      "    name: (identifier [0, 4] - [0, 10])\n"
-                                                      "    parameters: (parameters [0, 10] - [0, 13]\n"
-                                                      "      (identifier [0, 11] - [0, 12]))\n"
-                                                      "    body: (block [1, 4] - [3, 16]\n"
-                                                      "      (if_statement [1, 4] - [2, 19]\n"
-                                                      "        condition: (comparison_operator [1, 7] - [1, 12]\n"
-                                                      "          (identifier [1, 7] - [1, 8])\n"
-                                                      "          (integer [1, 11] - [1, 12]))\n"
-                                                      "        consequence: (block [2, 8] - [2, 19]\n"
-                                                      "          (return_statement [2, 8] - [2, 19]\n"
-                                                      "            (true [2, 15] - [2, 19]))))\n"
-                                                      "      (return_statement [3, 4] - [3, 16]\n"
-                                                      "        (false [3, 11] - [3, 16])))))"};
+                                                     "(module [0, 0] - [3, 16]\n"
+                                                     "  (function_definition [0, 0] - [3, 16]\n"
+                                                     "    name: (identifier [0, 4] - [0, 10])\n"
+                                                     "    parameters: (parameters [0, 10] - [0, 13]\n"
+                                                     "      (identifier [0, 11] - [0, 12]))\n"
+                                                     "    body: (block [1, 4] - [3, 16]\n"
+                                                     "      (if_statement [1, 4] - [2, 19]\n"
+                                                     "        condition: (comparison_operator [1, 7] - [1, 12]\n"
+                                                     "          (identifier [1, 7] - [1, 8])\n"
+                                                     "          (integer [1, 11] - [1, 12]))\n"
+                                                     "        consequence: (block [2, 8] - [2, 19]\n"
+                                                     "          (return_statement [2, 8] - [2, 19]\n"
+                                                     "            (true [2, 15] - [2, 19]))))\n"
+                                                     "      (return_statement [3, 4] - [3, 16]\n"
+                                                     "        (false [3, 11] - [3, 16])))))"};
 
-inline const std::pair<std::string, std::string> loops {
+inline const std::pair<std::string, std::string> loops{
     "def TestLoops(n):\n"
     "    for i in range(n):\n"
     "        while (i < n):\n"
@@ -319,7 +319,7 @@ inline const std::pair<std::string, std::string> loops {
     "      (return_statement [6, 4] - [6, 15]\n"
     "        (true [6, 11] - [6, 15])))))"};
 
-inline const std::pair<std::string, std::string> match_case {
+inline const std::pair<std::string, std::string> match_case{
     "def test_Match_case(x):\n"
     "    match x:\n"
     "        case 1:\n"
@@ -365,7 +365,7 @@ inline const std::pair<std::string, std::string> match_case {
     "                  (string_content [7, 20] - [7, 24])\n"
     "                  (string_end [7, 24] - [7, 25]))))))))))"};
 
-inline const std::pair<std::string, std::string> nested_if {
+inline const std::pair<std::string, std::string> nested_if{
     "def Testnestedif(x, y):\n"
     "    if x > 0:\n"
     "        if y > 0:\n"
@@ -412,7 +412,7 @@ inline const std::pair<std::string, std::string> nested_if {
     "        (unary_operator [8, 11] - [8, 13]\n"
     "          argument: (integer [8, 12] - [8, 13]))))))"};
 
-inline const std::pair<std::string, std::string> ternary {
+inline const std::pair<std::string, std::string> ternary{
     "def teSt_ternary(x):\n"
     "    return \"positive\" if (42 if x > 0 else -3) > 0 else \"non-positive\"",
 
@@ -443,4 +443,4 @@ inline const std::pair<std::string, std::string> ternary {
     "            (string_content [1, 57] - [1, 69])\n"
     "            (string_end [1, 69] - [1, 70])))))))"};
 
-}  // namespace helper
+} // namespace helper

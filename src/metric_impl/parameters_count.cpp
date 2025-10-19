@@ -11,7 +11,7 @@ std::string CountParametersMetric::Name() const noexcept {
 }
 
 static auto CountParams(const std::vector<std::string_view>& lines) {
-    auto it    = rs::adjacent_find(lines, [](auto a, auto b) {
+    auto it = rs::adjacent_find(lines, [](auto a, auto b) {
         return a.starts_with("name: (identifier") && b.starts_with("parameters: (parameters");
     });
     it         = std::next(std::next(it));
@@ -21,12 +21,12 @@ static auto CountParams(const std::vector<std::string_view>& lines) {
         it = std::next(it);
     }
     while(it->starts_with("(default_parameter")) {
-       ++params;
-        it = std::next(std::next(std::next(it)));   // Пропускаем литералы 'name' и 'value'.
+        ++params;
+        it = std::next(std::next(std::next(it))); // Пропускаем литералы 'name' и 'value'.
     }
     while(it->starts_with("(list_splat_pattern") || it->starts_with("(dictionary_splat_pattern")) {
         ++params;
-        it = std::next(std::next(it));   // Пропускаем литерал 'identifier'.
+        it = std::next(std::next(it)); // Пропускаем литерал 'identifier'.
     }
     return params;
 }
@@ -35,4 +35,4 @@ MetricResult::ValueType CountParametersMetric::CalculateImpl(const function::Fun
     auto filtered = Filter(f) | rs::to<std::vector>();
     return CountParams(filtered);
 }
-}  // namespace analyser::metric::metric_impl
+} // namespace analyser::metric::metric_impl

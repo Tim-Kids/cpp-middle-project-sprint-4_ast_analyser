@@ -8,26 +8,31 @@ std::string CyclomaticComplexityMetric::Name() const noexcept {
     return "CyclomaticComplexity";
 }
 
-static bool IsCyclomaticValue(std::string_view s) {
-        return
-        (s.starts_with("(try_statement")
-        || s.starts_with("(except_clause")
-        || s.starts_with("(finally_clause")
-        || s.starts_with("(if_statement")
-        || s.starts_with("(elif_clause")
-        || s.starts_with("alternative: (elif_clause")
-        || s.starts_with("(for_statement")
-        || s.starts_with("(while_statement")
-        || s.starts_with("(match_statement")
-        || s.starts_with("(case_clause")
-        || s.starts_with("alternative: (case_clause")
-        || s.starts_with("(conditional_expression")
-        || s.starts_with("(lambda"));
+static constexpr std::array<std::string_view, 13> cyclomatic_complexity_metric_names = {
+    "(try_statement",
+    "(except_clause",
+    "(finally_clause",
+    "(if_statement",
+    "(elif_clause",
+    "alternative: (elif_clause",
+    "(for_statement",
+    "(while_statement",
+    "(match_statement",
+    "(case_clause",
+    "alternative: (case_clause",
+    "(conditional_expression",
+    "(lambda"
+};
+
+static bool IsCyclomaticValue(std::string_view value) {
+    return rs::any_of(cyclomatic_complexity_metric_names, [&](std::string_view name) {
+        return value.starts_with(name);
+    });
 }
 
 MetricResult::ValueType CyclomaticComplexityMetric::CalculateImpl(const function::Function& f) const {
     auto filtered = Filter(f);
-    auto c = std::ranges::count_if(filtered, IsCyclomaticValue);
+    auto c        = std::ranges::count_if(filtered, IsCyclomaticValue);
     return static_cast<int>(basic_complexity + c);
 }
-}  // namespace analyser::metric::metric_impl
+} // namespace analyser::metric::metric_impl

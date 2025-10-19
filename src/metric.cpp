@@ -12,7 +12,9 @@ void MetricExtractor::RegisterMetric(std::unique_ptr<IMetric> metric) {
 }
 
 MetricResults MetricExtractor::Get(const function::Function& func) const {
-    return metrics_ | rv::all | rv::transform([&](auto&& up) { return up->Calculate(func); }) | rs::to<std::vector>();
+    return metrics_ | rv::all | rv::transform([&](auto&& up) {
+        return up->Calculate(func);
+    }) | rs::to<std::vector>();
 }
 
-}  // namespace analyser::metric
+} // namespace analyser::metric

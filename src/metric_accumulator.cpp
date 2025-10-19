@@ -4,9 +4,12 @@
 namespace analyser::metric_accumulator {
 
 // Проходим по метрикам конкретного Function-объекта и передаем их соответствующему аггрегатору.
-void MetricsAccumulator::AccumulateNextFunctionResults(const std::vector<metric::MetricResult>& metric_results) const noexcept {
+void MetricsAccumulator::AccumulateNextFunctionResults(
+    const std::vector<metric::MetricResult>& metric_results) const noexcept {
     // Пропускаем метрики, к которым нет зарегистрированных аггрегаторов.
-    auto filtered = metric_results | std::views::filter([&](auto&& m) { return accumulators_.contains(m.metric_name);});
+    auto filtered = metric_results | std::views::filter([&](auto&& m) {
+        return accumulators_.contains(m.metric_name);
+    });
     rs::for_each(filtered, [&](auto&& metric) {
         accumulators_.at(metric.metric_name)->Accumulate(metric);
     });
@@ -22,7 +25,8 @@ void MetricsAccumulator::ResetAccumulators() {
 }
 
 // Вернем ссылку на завершенный аггрегатор.
-const std::unique_ptr<IAccumulator>& MetricsAccumulator::GetFinalizedAccumulator(const std::string& metric_name) const noexcept {
+const std::unique_ptr<IAccumulator>& MetricsAccumulator::GetFinalizedAccumulator(
+    const std::string& metric_name) const noexcept {
     auto it = accumulators_.find(metric_name);
     if(it == accumulators_.end()) {
         throw std::runtime_error("MetricsAccumulator: accumulator not found for metric '" + metric_name + "'");
@@ -47,4 +51,4 @@ void MetricsAccumulator::FinalizeAll() {
     });
 }
 
-}  // namespace analyser::metric_accumulator
+} // namespace analyser::metric_accumulator

@@ -33,7 +33,6 @@ int main(int argc, char* argv[]) {
         std::println("\n================================== Per-function metrics ==================================\n");
         analyser::metric::pretty_print(analysis);
 
-
         // 4. Регистрация агрегаторов.
         analyser::metric_accumulator::MetricsAccumulator accumulator;
         accumulator.RegisterAccumulator(
@@ -52,7 +51,7 @@ int main(int argc, char* argv[]) {
         // 5. Разделение по файлам и вывод на экран.
         std::println("\n=================================== Splitted by files ====================================\n");
         auto splitted_by_files = analyser::SplitByFiles(analysis);
-        for (auto const& file_group : splitted_by_files) {
+        for(auto const& file_group: splitted_by_files) {
             const auto& filename = file_group.at(0).first.filename;
             std::println("File: {}", filename);
 
@@ -66,8 +65,10 @@ int main(int argc, char* argv[]) {
         // 6. Разделение по классам и вывод на экран.
         auto splitted_by_classes = analyser::SplitByClasses(analysis);
         std::println("\n============================== Global aggregated metrics by classes ======================\n");
-        for (auto const& class_group : splitted_by_classes) {
-            std::string_view class_name = class_group.at(0).first.class_name ? class_name = class_group.at(0).first.class_name.value() : "unknown";
+        for(auto const& class_group: splitted_by_classes) {
+            std::string_view class_name                                   = class_group.at(0).first.class_name ?
+                                                               class_name = class_group.at(0).first.class_name.value() :
+                                                               "unknown";
             std::println("Class: {}", class_name);
 
             accumulator.ResetAccumulators();
@@ -82,7 +83,7 @@ int main(int argc, char* argv[]) {
 
         // 6. Агрегация результатов для всех метрик.
         std::println("\n=============================== Global aggregated metrics by files =======================\n");
-        for(auto const& funcs_in_file : splitted_by_files) {
+        for(auto const& funcs_in_file: splitted_by_files) {
             const auto& filename = funcs_in_file.at(0).first.filename;
             std::println("File: {}", filename);
 
@@ -93,7 +94,7 @@ int main(int argc, char* argv[]) {
         }
 
         std::println("\n============================= Global aggregated metrics by classes =======================\n");
-        for(auto const& funcs_in_file : splitted_by_classes) {
+        for(auto const& funcs_in_file: splitted_by_classes) {
             const auto& filename = funcs_in_file.at(0).first.filename;
             std::println("File: {}", filename);
 

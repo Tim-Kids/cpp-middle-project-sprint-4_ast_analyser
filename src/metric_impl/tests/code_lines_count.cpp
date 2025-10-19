@@ -10,11 +10,11 @@ namespace analyser::metric::metric_impl {
 
 static int RunExractor(const std::string& ast, std::string_view filename) {
     auto p = helper::WriteTempPy(ast, "loc");
-    analyser::file::File f {p};
+    analyser::file::File f{p};
     f.name     = filename;
     auto funcs = analyser::function::FunctionExtractor::Get(f);
     assert(!funcs.empty());
-    CodeLinesCountMetric cl_metric {};
+    CodeLinesCountMetric cl_metric{};
     int count = 0;
     for(const auto& func: funcs) {
         auto m_res = cl_metric.Calculate(func);
@@ -59,4 +59,4 @@ TEST(CodeLinesCount, ternary_ast) {
     EXPECT_EQ(RunExractor(helper::ternary.second, "ternary.py"), 2);
 }
 
-}  // namespace analyser::metric::metric_impl
+} // namespace analyser::metric::metric_impl

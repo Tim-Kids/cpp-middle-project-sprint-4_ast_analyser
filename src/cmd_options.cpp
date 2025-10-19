@@ -11,7 +11,8 @@ namespace analyser::cmd {
 
 namespace po = boost::program_options;
 
-ProgramOptions::ProgramOptions(): desc_("Allowed options") {
+ProgramOptions::ProgramOptions():
+    desc_("Allowed options") {
     desc_.add_options()("help,h", "Display help message")(
         "file,f", po::value<std::vector<std::string>>(&files_)->required()->multitoken(),
         "List of files to process (required)");
@@ -46,4 +47,4 @@ bool ProgramOptions::Parse(int argc, char* argv[]) {
     }
 }
 
-}  // namespace analyser
+} // namespace analyser

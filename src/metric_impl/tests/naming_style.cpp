@@ -50,14 +50,14 @@ TEST(NamingStyleMetric, DetectsMagicSnakeCase) {
     NamingStyleMetric metric;
     auto func         = MakeFunctionWithName("__init__");
     std::string style = std::get<std::string>(metric.Calculate(func).value);
-    EXPECT_EQ(style, "snake_case");  // underscores + lowercase
+    EXPECT_EQ(style, "snake_case"); // underscores + lowercase
 }
 
 TEST(NamingStyleMetric, DetectsUnknownMixedUnderscoreAndCaps) {
     NamingStyleMetric metric;
     auto func         = MakeFunctionWithName("Test_function");
     std::string style = std::get<std::string>(metric.Calculate(func).value);
-    EXPECT_EQ(style, "unknown");  // both underscore and caps
+    EXPECT_EQ(style, "unknown"); // both underscore and caps
 }
 
 TEST(NamingStyleMetric, DetectsUnknownMixedRandom) {
@@ -81,4 +81,4 @@ TEST(NamingStyleMetric, HandlesSingleLetter) {
     EXPECT_EQ(style, "lowercase");
 }
 
-}  // namespace analyser::metric::metric_impl
+} // namespace analyser::metric::metric_impl

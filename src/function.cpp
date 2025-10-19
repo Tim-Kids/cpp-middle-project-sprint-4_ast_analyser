@@ -8,7 +8,7 @@
 namespace analyser::function {
 
 std::vector<Function> FunctionExtractor::Get(const analyser::file::File& file) {
-    std::vector<Function> functions {};
+    std::vector<Function> functions{};
     size_t start             = 0;
     const std::string marker = "(function_definition";
     const std::string& ast   = file.ast;
@@ -32,7 +32,8 @@ std::vector<Function> FunctionExtractor::Get(const analyser::file::File& file) {
         std::string func_name = GetNameFromSource(func_ast, file.source_lines);
 
         // Function func {.filename = file.name, .class_name = std::nullopt, .name = func_name, .ast = func_ast};
-        Function func {.filename = helper::MakePyFileName(file.name), .class_name = std::nullopt, .name = func_name, .ast = func_ast};
+        Function func{.filename = helper::MakePyFileName(file.name), .class_name = std::nullopt, .name = func_name,
+                      .ast = func_ast};
 
         auto class_info = FindEnclosingClass(ast, name_loc);
         if(class_info) {
@@ -57,16 +58,16 @@ FunctionExtractor::FunctionNameLocation FunctionExtractor::GetNameLocation(const
     std::string coords = function_ast.substr(coord_start + 1, coord_end - coord_start - 1);
 
     size_t comma = coords.find(',');
-    Position start {static_cast<size_t>(ToInt(coords.substr(0, comma))),
-                    static_cast<size_t>(ToInt(coords.substr(comma + 2)))};
+    Position start{static_cast<size_t>(ToInt(coords.substr(0, comma))),
+                   static_cast<size_t>(ToInt(coords.substr(comma + 2)))};
 
     size_t dash            = function_ast.find('[', coord_end);
     size_t end_bracket     = function_ast.find(']', dash);
     std::string end_coords = function_ast.substr(dash + 1, end_bracket - dash - 1);
 
     comma = end_coords.find(',');
-    Position end {static_cast<size_t>(ToInt(end_coords.substr(0, comma))),
-                  static_cast<size_t>(ToInt(end_coords.substr(comma + 2)))};
+    Position end{static_cast<size_t>(ToInt(end_coords.substr(0, comma))),
+                 static_cast<size_t>(ToInt(end_coords.substr(comma + 2)))};
 
     return {start, end, ""};
 }
@@ -100,7 +101,7 @@ FunctionExtractor::FindEnclosingClass(const std::string& ast, const FunctionName
         size_t comma = coords.find(',');
         auto s_start = static_cast<size_t>(ToInt(coords.substr(0, comma)));
         auto s_end   = static_cast<size_t>(ToInt(coords.substr(comma + 2)));
-        Position class_start {s_start, s_end};
+        Position class_start{s_start, s_end};
 
         size_t dash               = ast.find('-', coord_end);
         size_t second_coord_start = ast.find('[', dash);
@@ -110,7 +111,7 @@ FunctionExtractor::FindEnclosingClass(const std::string& ast, const FunctionName
         comma        = end_coords.find(',');
         auto e_start = static_cast<size_t>(ToInt(end_coords.substr(0, comma)));
         auto e_end   = static_cast<size_t>(ToInt(end_coords.substr(comma + 2)));
-        Position class_end {e_start, e_end};
+        Position class_end{e_start, e_end};
 
         if(func_loc.start.line > class_start.line ||
            (func_loc.start.line == class_start.line && func_loc.start.col >= class_start.col)) {
@@ -165,4 +166,4 @@ std::string FunctionExtractor::GetClassNameFromSource(const ClassInfo& class_inf
     return class_line.substr(name_start, name_end - name_start);
 }
 
-}  // namespace analyser::function
+} // namespace analyser::function

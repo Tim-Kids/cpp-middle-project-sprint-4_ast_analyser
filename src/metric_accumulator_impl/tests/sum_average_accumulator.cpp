@@ -51,4 +51,4 @@ TEST(SumAverageAccumulator, ThrowsOnWrongType) {
     metric::MetricResult wrong{"CodeLinesCount", std::string("invalid")};
     EXPECT_THROW(acc.Accumulate(wrong), std::runtime_error);
 }
-}  // namespace analyser::metric_accumulator::metric_accumulator_impl::test
+} // namespace analyser::metric_accumulator::metric_accumulator_impl::test

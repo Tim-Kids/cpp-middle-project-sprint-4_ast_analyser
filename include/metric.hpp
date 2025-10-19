@@ -77,7 +77,9 @@ namespace analyser::metric
     // -------------------------- pretty-prints --------------------------
 
     template <typename T>
-    inline auto pretty_print(const std::vector<T>& func_to_metrics) {}
+    inline auto pretty_print(const std::vector<T>& func_to_metrics)
+    {
+    }
 
     template <>
     inline auto
